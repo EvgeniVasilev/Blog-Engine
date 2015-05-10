@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!ELEMENT root (orenda|login|contacts|image_upload|admin_panel)*>
+
+<!ELEMENT orenda (#PCDATA)>
+
+<!ELEMENT login (#PCDATA)>
+
+<!ELEMENT logout( #PCDATA)>
+
+<!ELEMENT contacts (#PCDATA)>
+
+<!ELEMENT image_upload (#PCDATA)>
+
+<!ELEMENT admin_panel (#PCDATA)>
