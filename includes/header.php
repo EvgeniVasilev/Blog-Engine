@@ -182,7 +182,7 @@ require_once './functions/process_search.php';
                     </ul>
                     <form class="navbar-form navbar-right" role="search" method="get" action="./search.php">
                         <div class="form-group">                           
-                            <input name="keywords" type="text" class="form-control" value="<?php echo setKeywords(); ?>">
+                            <input name="keywords" type="text" class="form-control" value="<?php echo set_keywords(); ?>">
                         </div>
                         <button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-search"></span>&nbsp;Търси</button>
                     </form>
@@ -213,4 +213,4 @@ require_once './functions/process_search.php';
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
         <!--modals-->
-        <div class="container">
+        <div class="container">           
