@@ -1,7 +1,6 @@
 <?php
-ob_start();
 session_start();
-
+ob_start();
 require_once './functions/process_search.php';
 ?>
 <!DOCTYPE html>
@@ -10,17 +9,22 @@ require_once './functions/process_search.php';
         <title>Блог</title>
         <meta charset="UTF-8"/>    
         <meta name="viewport" content="width=device-width,initial-scale=1">
+        <meta name="google-translate-customization" content="eac52303671044fb-9d18eb6d2e21e4f7-g03537c359ea7a35e-10"></meta>
         <!--css-->
         <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.css"/>
-        <style type="text/css">            
+        <style type="text/css">     
+            body{
+                font-size: 15px;
+            }
+
             .window{
                 min-height: 550px;
             }
-            
+
             #articles{
                 text-align: justify !important;
             }
-            
+
             .footer{
                 background-color: rgb(34,34,34);
                 color: white;
@@ -34,6 +38,19 @@ require_once './functions/process_search.php';
 
             a{
                 outline: none !important;
+                cursor: pointer;
+            }
+
+            .normal{
+                font-size: 14px;
+            }
+
+            .medium{
+                font-size: 16px;
+            }
+
+            .large{
+                font-size: 18px;
             }
 
             .custom-danger{
@@ -134,7 +151,7 @@ require_once './functions/process_search.php';
                     opacity: 1;
                 }
             }
-            
+
             @media screen and (min-width: 768px) and (max-width: 1024px){
                 .window{
                     min-height: 1024px;
@@ -214,4 +231,35 @@ require_once './functions/process_search.php';
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
         <!--modals-->
-        <div class="container">           
+        <div id="container" class="container">           
+            <div class="row">
+                <div class="col-lg-6">
+                    <?php
+                    $visibility = null;
+                    if (strpos($_SERVER['PHP_SELF'], '/index.php') or strpos($_SERVER['PHP_SELF'], '/full_article.php'))
+                    {
+                        $visibility = 'vsible';
+                    } else
+                    {
+                        $visibility = 'hidden';
+                    }
+                    ?>
+                    <div class="<?php echo $visibility ?>">
+                        <a id="normal" class="normal">A</a>
+                        <span>&nbsp;&nbsp;</span>
+                        <a id="medium" class="medium">A</a>
+                        <span>&nbsp;&nbsp;</span>
+                        <a id="large" class="large">A</a>
+                    </div>
+
+                </div>
+                <div class="col-lg-6">
+                    <div class="pull-right" id="google_translate_element"></div><script type="text/javascript">
+                        function googleTranslateElementInit() {
+                            new google.translate.TranslateElement({pageLanguage: 'bg', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+                        }
+                    </script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+                </div>
+            </div>
+            <script type="text/javascript" src="./scripts/letter_resize.js"></script>               
+           
