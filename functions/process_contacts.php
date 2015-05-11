@@ -1,8 +1,8 @@
 <?php
-
 // checks if name is set and keeps if it is so
 function setNameValue()
 {
+
     if (isset($_GET['name']) and ! empty($_GET['name']))
     {
         $nvalue = $_GET['name'];
@@ -32,16 +32,41 @@ function setMessageValue()
 
 function mailMe()
 {
+    
+    require_once './resources/mail_tmpl.php';
+
+    $to = "evgeni.vasilev0912@gmail.com";
+    $subject = "Съобщение от читател";
+
+    $message_head = "
+<html>
+<head>
+    <title>HTML email</title>
+        <style>
+            p{
+               font-family: monospace;
+               font-size: 14px;
+            }
+       </style>
+</head>
+<body>";
+
+    $message_bottom = "</body></html>";
+// Always set content-type when sending HTML email
+    $headers = "MIME-Version: 1.0" . "\r\n";
+    $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+
     $nvalue = "";
     $message = '';
     $evalue = "";
-    
+
 
     if (isset($_GET['name']) and ! empty($_GET['name']))
     {
         $nvalue = $_GET['name'];
     } else
-    {
+    {        
         return;
     }
 
@@ -65,9 +90,8 @@ function mailMe()
 
     $mails = mail($to, $subject, $body, $headers);
     if ($mails)
-    {
-        header("Location:./contacts.php");
+    {       
+        header("Location:../contacts.php");
     }
 }
-
 mailMe();

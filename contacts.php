@@ -1,7 +1,6 @@
 <?php
 require_once './includes/header.php';
 require_once './functions/process_contacts.php';
-require_once './resources/mail_tmpl.php';
 ?>
 <div class="window">
     <h1 class="page-header"><small>Контакти</small></h1>
