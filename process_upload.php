@@ -1,4 +1,3 @@
-
 <?php
 require_once './includes/header.php';
 require_once './functions/image_upload.php';
