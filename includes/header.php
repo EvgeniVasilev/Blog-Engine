@@ -43,14 +43,17 @@ require_once './functions/process_search.php';
 
             .normal{
                 font-size: 14px;
+                margin-right: 10px;
             }
 
             .medium{
                 font-size: 16px;
+                margin-right: 10px;
             }
 
             .large{
                 font-size: 18px;
+                margin-right: 10px;
             }
 
             .custom-danger{
@@ -235,20 +238,15 @@ require_once './functions/process_search.php';
             <div class="row">
                 <div class="col-lg-6">
                     <?php
-                    $visibility = null;
-                    if (strpos($_SERVER['PHP_SELF'], '/index.php') or strpos($_SERVER['PHP_SELF'], '/full_article.php'))
+                    $visibility = 'hidden';
+                    if (strpos($_SERVER['PHP_SELF'], '/index.php') !== false or strpos($_SERVER['PHP_SELF'], '/full_article.php') !== false)
                     {
                         $visibility = 'vsible';
-                    } else
-                    {
-                        $visibility = 'hidden';
                     }
                     ?>
                     <div class="<?php echo $visibility ?>">
-                        <a id="normal" class="normal">A</a>
-                        <span>&nbsp;&nbsp;</span>
-                        <a id="medium" class="medium">A</a>
-                        <span>&nbsp;&nbsp;</span>
+                        <a id="normal" class="normal">A</a>                       
+                        <a id="medium" class="medium">A</a>                        
                         <a id="large" class="large">A</a>
                     </div>
 
@@ -262,4 +260,3 @@ require_once './functions/process_search.php';
                 </div>
             </div>
             <script type="text/javascript" src="./scripts/letter_resize.js"></script>               
-           
