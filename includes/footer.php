@@ -2,10 +2,28 @@
 <div class="footer">
     <div class="container">
         <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            <b>
+                &copy; Всички права са запазени.
+            </b>
         </p>
-
+        <p>
+            Всеки, който желае да ползва материали, публикувани на сайта, може да го прави като посочва името на статията и линк към
+        </p>
+        <p>
+            <a href="http://www.orendabg.net">www.orendabg.net</a> 
+        </p>
+        <p>Кодът на сайта е свободно достъпен за ползване в некомерсиални проекти на следния адрес:</p>
+        <p>
+            <a href="https://github.com/EvgeniVasilev/Blog-Engine">github.com/EvgeniVasilev/Blog-Engine</a>
+        </p>
+        <p>За допълнителна информация по отношение на авторските права, която не е посочена тук, можете да се свържете с Администратора на сайта.</p>          
+        </p>
+        <p>Автор: Евгени Василев</p>
+        <p>
+            <a href="mailto:evgeni.vasilev0912@gmail.com">evgeni.vasilev0912@gmail.com</a>
+        </p>
     </div>
 </div>
+<script type="text/javascript" src="./scripts/letter_resize.js"></script>  
 </body>
 </html>

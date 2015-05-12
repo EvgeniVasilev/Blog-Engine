@@ -15,7 +15,7 @@ require_once './functions/process_search.php';
         <style type="text/css">     
             body{
                 font-size: 15px;
-            }
+            }           
 
             .window{
                 min-height: 550px;
@@ -39,22 +39,7 @@ require_once './functions/process_search.php';
             a{
                 outline: none !important;
                 cursor: pointer;
-            }
-
-            .normal{
-                font-size: 14px;
-                margin-right: 10px;
-            }
-
-            .medium{
-                font-size: 16px;
-                margin-right: 10px;
-            }
-
-            .large{
-                font-size: 18px;
-                margin-right: 10px;
-            }
+            }            
 
             .custom-danger{
                 padding: 15px 10px;
@@ -245,13 +230,16 @@ require_once './functions/process_search.php';
                     }
                     ?>
                     <div class="<?php echo $visibility ?>">
-                        <a id="normal" class="normal">A</a>                       
-                        <a id="medium" class="medium">A</a>                        
-                        <a id="large" class="large">A</a>
+                        <label>Размер на шрифта:</label>
+                        <br/>
+                        <button id="normal" class="btn btn-default">Нормален</button>                       
+                        <button id="medium" class="btn btn-default">Среден</button>                        
+                        <button  href="#" id="large" class="btn btn-default">Голям</button>
                     </div>
 
                 </div>
                 <div class="col-lg-6">
+                    <br/>
                     <div class="pull-right" id="google_translate_element"></div><script type="text/javascript">
                         function googleTranslateElementInit() {
                             new google.translate.TranslateElement({pageLanguage: 'bg', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
@@ -259,4 +247,4 @@ require_once './functions/process_search.php';
                     </script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
                 </div>
             </div>
-            <script type="text/javascript" src="./scripts/letter_resize.js"></script>               
+
