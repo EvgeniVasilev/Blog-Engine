@@ -6,9 +6,8 @@ require_once './functions/edit_article.php';
     <?php
     $id = $_GET["id"];
     $sql = "SELECT * FROM articles WHERE article_id=" . $id;
-    
     // edit article
-    edit_article($sql);
+    get_edit_article($sql);
     ?>
     <script>
         // Replace the <text area id="editor1"> with a CKEditor

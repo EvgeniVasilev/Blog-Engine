@@ -1,5 +1,6 @@
 <?php
 require_once './includes/header.php';
+require_once './functions/create_article.php';
 $DESC = null;
 $TEXT = null;
 $ARTCL_HEADING = null;
@@ -25,7 +26,10 @@ if (isset($_GET['text']) and ! empty($_GET['text']))
 
 if (!empty($ARTCL_HDR) and ! empty($DESC) and ! empty($TEXT))
 {
-//    $db->insert("INSERT INTO articles (article_header,article_body,article_summary, published) Values('" . $ARTCL_HDR . "', '" . $TEXT . "','" . $DESC . "', CURDATE())");
+$sql = ("INSERT INTO articles (article_header,article_body,article_summary, published) Values('" . $ARTCL_HDR . "', '" . $TEXT . "','" . $DESC . "', CURDATE())");
+create_article($sql);
+
+
 }
 ?>
 <div class="window">

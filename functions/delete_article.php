@@ -13,14 +13,11 @@ function delete_article($sql)
 
     if (isset($_GET["delete"]) and $_GET["delete"] === "1")
     {
-        $sql = "DELETE FROM articles Where article_id=" . $id;
+        $sql = "DELETE FROM articles Where article_id=" . $_GET['id'];
         $mysqli->query($sql) or die($this->mysqli->error);
-        if ($db)
+        if ($sql)
         {
-            echo "<br/>";
-            echo "<br/>";
-            echo "<br/>";
-            echo "Статията беше изтрита!";
+            header("Location: ./index.php");
         }
     }
 }
