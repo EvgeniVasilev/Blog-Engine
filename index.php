@@ -14,7 +14,7 @@ require_once './functions/list_articles.php';
     <div id="articles">
         <!--dispay articles-->
         <?php
-        $sql = "select * from articles ORDER BY article_id DESC";
+        $sql = "select count(*) as records from articles";
         list_full_article($sql);
         ?>
     </div>
