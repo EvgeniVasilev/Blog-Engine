@@ -3,7 +3,7 @@
 function list_full_article($sql)
 {
     require_once 'db.php';
-    $content = null;
+    $link = null;
     $page = null;
     $n = 5; // records per page
 
@@ -20,7 +20,8 @@ function list_full_article($sql)
     if (!isset($_GET['page']))
     {
         $page = 0;
-    } else {
+    } else
+    {
         $page = $_GET['page'];
     }
 
@@ -29,24 +30,37 @@ function list_full_article($sql)
     // query to show desired number of records
     $sql_num = 'SELECT * FROM articles ORDER BY article_id DESC limit ' . $records . ", $n";
     $result = $mysqli->query($sql_num) or die($mysqli->error);
-    $max = $result->num_rows;    
+    $max = $result->num_rows;
     // displays back link
+
+    $link .= "<nav>";
+    $link .= "<ul class=\"pager\">";
+    
     if ($page > 0)
     {
         $p = $page - 1;
-        $content .= "<a href=\"index.php?page=$p\">";
-        $content .= "Назад";
-        $content .="</a>";
+        $link .= "<li class=\"previous\"><a href=\"articles.php?page=$p\" class=\"pager\"><span aria-hidden=\"true\">&larr;&nbsp;&nbsp;</span>";
+        $link .= "Назад";
+        $link .="</a></li>";
     }
 
     $page++;
 
+//    <nav>
+//    <ul class = "pager">
+//    <li class = "previous"><a href = "#"><span aria-hidden = "true">&larr;
+//    </span> Older</a></li>
+//    <li class = "next"><a href = "#">Newer <span aria-hidden = "true">&rarr;
+//    </span></a></li>
+//    </ul>
+//    </nav>
     // displays link next
     if ($records + $n < $rec_count)
     {
-        $content .= "<a href=\"index.php?page=$page\" class=\"pull-right\">";
-        $content .="Следваща";
-        $content .= "</a>";
+        $link .= "<li class=\"next\"><a href=\"articles.php?page=$page\" class=\"pager pull-right next\">";
+        $link .="Следваща";
+        $link .= "&nbsp;&nbsp;<span aria-hidden=\"true\">&rarr;</span></a></li>";
+        $link .="</ul></nav>";
     }
 
     if ($result->num_rows === 0)
@@ -70,8 +84,8 @@ function list_full_article($sql)
             echo "| <a  href=\"./edit_article.php?id=" . $row["article_id"] . '"' . ">Редактирай</a> | \n";
             echo "<a  href=\"./delete_article.php?id=" . $row["article_id"] . '"' . "> Изтрий</a>&nbsp;&nbsp;\n";
         }
-        echo "<hr/>";        
+		echo "<hr/>";
         }
-        
-        echo $content;
+
+    echo $link;
 }

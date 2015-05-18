@@ -1,23 +1,27 @@
 <?php
-require_once ("includes/header.php");
-require_once './functions/list_articles.php';
+	require_once ( './includes/header.php');  
+	require_once ( './functions/promoted_article.php');
 ?>
 <div class="window">
-    <?php
+	 <?php
     if (isset($_SESSION['flasher']))
     {
         echo $_SESSION['flasher'];
     }
-    ?>
-
-    <h1 class="page-header"><small>Статии</small></h1>   
-    <div id="articles">
-        <!--dispay articles-->
-        <?php
-        $sql = "select count(*) as records from articles";
-        list_full_article($sql);
-        ?>
-    </div>
+    ?>	
+	<div class="page-header">
+		<h1>
+			<small>Последно публикувана статия</small>
+		</h1>
+	</div>
+	<div  id="articles">
+		<?php
+			$sql='SELECT * FROM articles ORDER BY article_id DESC limit 1' ;
+			prometd_article($sql);
+		?>
+	</div>	
 </div>
+
 <?php
-require_once ("includes/footer.php");
+	require_once ( './includes/footer.php');
+?>

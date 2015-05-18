@@ -12,11 +12,9 @@ require_once './includes/header.php';
             if (isset($_GET["keywords"]))
             {
                 $keywords = $_GET["keywords"];
-            }
-            // make query to database 
-            $sql = "SELECT * FROM articles WHERE MATCH (article_header, article_summary) AGAINST('" . $keywords . "' IN BOOLEAN MODE) ORDER BY MATCH (article_header, article_summary) AGAINST ('" . $keywords . "' IN BOOLEAN MODE) DESC";
+            }            
             // proces search 
-            do_search($sql);
+            do_search();
             ?>
 </div>
 <?php

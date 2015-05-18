@@ -2,6 +2,8 @@
 session_start();
 ob_start();
 require_once './functions/process_search.php';
+require_once ('./functions/roll_back.php');
+roll_back();
 ?>
 <!DOCTYPE html>
 <html>
@@ -171,6 +173,7 @@ require_once './functions/process_search.php';
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">    
+						<li><a href="articles.php"><span class="glyphicon glyphicon-book"></span>&nbsp;&nbsp;Статии</a></li>
                         <?php if (!isset($_SESSION['access_level'])): ?>
                             <li><a href="" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-log-in"></span>&nbsp;&nbsp;Вход Администратор</a></li>
                         <?php endif; ?>
@@ -224,7 +227,7 @@ require_once './functions/process_search.php';
                 <div class="col-lg-6">
                     <?php
                     $visibility = 'hidden';
-                    if (strpos($_SERVER['PHP_SELF'], '/index.php') !== false or strpos($_SERVER['PHP_SELF'], '/full_article.php') !== false)
+                    if (strpos($_SERVER['PHP_SELF'], '/index.php') !== false or strpos($_SERVER['PHP_SELF'], '/full_article.php') !== false or(strpos($_SERVER['PHP_SELF'], '/articles.php') !== false))
                     {
                         $visibility = 'vsible';
                     }
@@ -247,4 +250,5 @@ require_once './functions/process_search.php';
                     </script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
                 </div>
             </div>
+            <br/>
 
