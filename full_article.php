@@ -1,19 +1,26 @@
 <?php
 require_once './includes/header.php';
 require_once './functions/get_full_article.php';
-require_once './functions/list_comments.php';
+// require_once './functions/list_comments.php';
 ?>
     <div class="window">
         <?php
         $id = $_GET["id"];
         $sql = "SELECT * FROM articles WHERE article_id=" . $id;
-
+        echo '<div class="row">';
         get_ful_article($sql);
-
-        list_comments();
+        echo "</div>";
         ?>
+
+        <?php
+        // list_comments();
+        ?>
+
         <div class="row">
-            <hr/>
+            <div id="comments"></div>
+            <h2>
+                <small>Коментирай</small>
+            </h2>
             <form method="get" class="form-horizontal col-lg-5 col-sm-6 col-xs-12">
                 <input id="get_id" type="hidden" value="<?php echo $id; ?>"/>
 
@@ -56,15 +63,38 @@ require_once './functions/list_comments.php';
                         url: './functions/post_comments.php',
                         data: {
                             id: get_id.val(),
-                            name: name.val(),
-                            comment: message.val()
+                            name: u_name_val,
+                            comment: message_val
                         }
-                    }).done(function (data) {
+                    }).done(function () {
                         name.val(null);
                         message.val(null);
                         $("#comment_confirm").modal();
                     });
                 });
+
+                setInterval(function () {
+                    $.ajax({
+                        action: 'GET',
+                        url: './functions/list_comments.php',
+                        data: {
+                            id: get_id.val()
+                        }
+                    }).done(function (data) {
+                        $('#comments').html(data);
+                    });
+                    // alert('Set it');
+                }, 2500);
+                $.ajax({
+                    action: 'GET',
+                    url: './functions/list_comments.php',
+                    data: {
+                        id: get_id.val()
+                    }
+                }).done(function (data) {
+                    $('#comments').html(data);
+                });
+
             });
         </script>
     </div>
