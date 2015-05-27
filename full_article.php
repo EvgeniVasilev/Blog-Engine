@@ -32,6 +32,16 @@ require_once './functions/get_full_article.php';
                     <label>Текст:</label>
                     <textarea id="message" class="form-control" rows="5"></textarea>
                 </div>
+                <div class="form-group">
+                    <h3>
+                        <small>Моля, попълнете сумата от числата:</small>
+                    </h3>
+                    <input id="m_one" type="text" class="col-lg-2" value="<?php echo rand(1, 10); ?>"/>
+                    <input type="text" class="col-lg-1 no-border" value="+"/>                    
+                    <input id="m_two" type="text" class="col-lg-2" value="<?php echo rand(1, 10);?>"/>
+                    <input type="text" class="col-lg-1 no-border" value="="/>                    
+                    <input id="r_captcha" type="text" class="col-lg-2" value=""/>
+                </div>
             </form>
         </div>
         <div class="row">
@@ -40,7 +50,8 @@ require_once './functions/get_full_article.php';
         <br/>
         <script>
             $(document).ready(function () {
-                var btn = $("#f_comments"), name = $('#u_name'), message = $('#message'), u_name_val = '', message_val = '', get_id = $('#get_id');
+                var btn = $("#f_comments"), name = $('#u_name'), message = $('#message'), u_name_val = '', message_val = '', get_id = $('#get_id'), m_one = $('#m_one'), m_two = $('#m_two'), r_captcha = $('#r_captcha');                
+                /// alert(n_captcha);
                 btn.on('click', function () {
                     if (!name.val()) {
                         alert('Моля, попълнете потребителско име!');
@@ -57,6 +68,11 @@ require_once './functions/get_full_article.php';
                     } else {
                         message_val = message.val();
                     }
+                    
+                    if(r_captcha.val() != ((Number(m_one.val())) + Number(m_two.val())) ){                        
+                        alert('Моля, попълнете верния отговор!');
+                        return;
+                    }
 
                     $.ajax({
                         action: 'GET',
@@ -70,6 +86,9 @@ require_once './functions/get_full_article.php';
                         name.val(null);
                         message.val(null);
                         $("#comment_confirm").modal();
+                        m_one.val(Math.floor(Math.random() * (10 - 1) + 1));
+                        m_two.val(Math.floor(Math.random() * (10 - 1) + 1));
+                        r_captcha.val(null);
                     });
                 });
 

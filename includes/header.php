@@ -11,13 +11,18 @@ roll_back();
         <title>Блог</title>
         <meta charset="UTF-8"/>    
         <meta name="viewport" content="width=device-width,initial-scale=1">
-        <meta name="google-translate-customization" content="eac52303671044fb-9d18eb6d2e21e4f7-g03537c359ea7a35e-10"></meta>
+        <meta name="google-translate-customization" content="eac52303671044fb-9d18eb6d2e21e4f7-g03537c359ea7a35e-10"></meta>        
         <!--css-->
         <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.css"/>
         <style type="text/css">     
             body{
                 font-size: 15px;
-            }           
+                color:#5e5e5e;
+            }
+            
+            .button{
+                color: #5e5e5e !important;
+            }
 
             .window{
                 min-height: 550px;
@@ -58,6 +63,11 @@ roll_back();
                 -moz-animation: admin 1.5s;
                 animation: admin 1.5s;
                 animation-iteration-count: 1;
+            }
+            
+            .no-border{
+                border: none;
+                outline:none;
             }
 
             @-webkit-keyframes admin {
@@ -235,9 +245,9 @@ roll_back();
                     <div class="<?php echo $visibility ?>">
                         <label>Размер на шрифта:</label>
                         <br/>
-                        <button id="normal" class="btn btn-default">Нормален</button>                       
-                        <button id="medium" class="btn btn-default">Среден</button>                        
-                        <button  href="#" id="large" class="btn btn-default">Голям</button>
+                        <button id="normal" class="btn btn-default button">Нормален</button>                       
+                        <button id="medium" class="btn btn-default button">Среден</button>                        
+                        <button  href="#" id="large" class="btn btn-default button">Голям</button>
                     </div>
 
                 </div>
